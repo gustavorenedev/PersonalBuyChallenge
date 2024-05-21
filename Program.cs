@@ -3,9 +3,10 @@ using PersonalBuy.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Adicione os serviços ao contêiner.
 builder.Services.AddControllersWithViews();
 
+// Configure o DbContext
 builder.Services.AddDbContext<DataContext>(o =>
 {
     o.UseOracle(builder.Configuration.GetConnectionString("OracleConnection"));
@@ -13,23 +14,20 @@ builder.Services.AddDbContext<DataContext>(o =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Configure o pipeline de requisição HTTP.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
-
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Cliente}/{action=Login}/{id?}");
 
 app.Run();

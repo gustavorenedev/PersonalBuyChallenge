@@ -1,24 +1,18 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using PersonalBuy.Models;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
-namespace PersonalBuy.Models
+namespace PersonalBuy.DTOs
 {
-    [Table("TB_Produto")]
-    public class Produto
+    public class CadastroProdutoDTO
     {
-        [Key]
-        public int ProdutoId { get; set; }
         [Required]
-        [Column("nome_produto")]
         public string NomeProduto { get; set; }
         [Required]
-        [Column("descricao_produto")]
         public string DescricaoProduto { get; set; }
         [Required]
-        [Column("categoria_produto")]
         public string CategoriaProduto { get; set; }
         [Required]
-        [Column("preco_produto")]
         public double PrecoProduto { get; set; }
     }
 }

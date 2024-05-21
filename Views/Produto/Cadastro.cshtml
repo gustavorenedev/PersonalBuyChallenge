@@ -1,0 +1,28 @@
+﻿@model PersonalBuy.DTOs.CadastroProdutoDTO
+@using PersonalBuy.Models
+
+<h2>Cadastrar Produto</h2>
+
+<form asp-controller="Produto" asp-action="EfetuarCadastro" method="post">
+    <div class="form-group">
+        <label asp-for="NomeProduto">Nome do Produto</label>
+        <input asp-for="NomeProduto" class="form-control" />
+        <span asp-validation-for="NomeProduto" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="DescricaoProduto">Descrição do Produto</label>
+        <input asp-for="DescricaoProduto" class="form-control" />
+        <span asp-validation-for="DescricaoProduto" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PrecoProduto">Preço do Produto</label>
+        <input asp-for="PrecoProduto" class="form-control" />
+        <span asp-validation-for="PrecoProduto" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="CategoriaProduto">Categoria do Produto</label>
+        <input asp-for="CategoriaProduto" class="form-control" />
+        <span asp-validation-for="CategoriaProduto" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Cadastrar</button>
+</form>

@@ -1,0 +1,77 @@
+﻿@page
+@model PersonalBuy.Views.Cliente.LoginModel
+@{
+}
+
+<h2 id="loginHeader">Login</h2>
+
+@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+{
+    <div class="alert alert-danger" role="alert">
+        @ViewBag.ErrorMessage
+    </div>
+}
+
+<form asp-action="EfetuarLogin" id="loginForm">
+    <div class="form-group">
+        <label for="Email">Email</label>
+        <input type="email" class="form-control" id="Email" name="Email" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+</form>
+
+<hr id="loginDivider" />
+
+<p id="signupPrompt">Não tem uma conta? <a href="#" id="showCadastroForm">Cadastre-se aqui</a></p>
+
+<div id="cadastroForm" style="display:none;">
+    <h2>Cadastro</h2>
+    <form id="cadastroFormContent" asp-action="EfetuarCadastro" method="post">
+        <div class="form-group">
+            <label for="Nome">Nome</label>
+            <input type="text" class="form-control" id="Nome" name="Nome" required>
+        </div>
+        <div class="form-group">
+            <label for="Cpf">CPF</label>
+            <input type="text" class="form-control" id="Cpf" name="Cpf" required>
+        </div>
+        <div class="form-group">
+            <label for="EmailCadastro">Email</label>
+            <input type="email" class="form-control" id="EmailCadastro" name="Email" required>
+        </div>
+        <div class="form-group">
+            <label for="Telefone">Telefone</label>
+            <input type="text" class="form-control" id="Telefone" name="Telefone" required>
+        </div>
+        <div class="form-group">
+            <label for="Endereco">Endereço</label>
+            <input type="text" class="form-control" id="Endereco" name="Endereco" required>
+        </div>
+        <div class="form-group">
+            <label for="Cep">CEP</label>
+            <input type="text" class="form-control" id="Cep" name="Cep" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+    </form>
+</div>
+
+@section Scripts {
+    <script>
+        document.getElementById("showCadastroForm").addEventListener("click", function (event) {
+            event.preventDefault();
+            document.getElementById("loginHeader").style.display = "none";
+            document.getElementById("loginForm").style.display = "none";
+            document.getElementById("loginDivider").style.display = "none";
+            document.getElementById("signupPrompt").style.display = "none";
+            document.getElementById("cadastroForm").style.display = "block";
+        });
+
+        document.getElementById("cadastroFormContent").addEventListener("submit", function (event) {
+            document.getElementById("cadastroForm").style.display = "none";
+            document.getElementById("loginHeader").style.display = "block";
+            document.getElementById("loginForm").style.display = "block";
+            document.getElementById("loginDivider").style.display = "block";
+            document.getElementById("signupPrompt").style.display = "block";
+        });
+    </script>
+}

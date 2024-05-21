@@ -1,0 +1,39 @@
+﻿@model IEnumerable<PersonalBuy.Models.Produto>
+
+<h2>Lista de Produtos</h2>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nome do Produto</th>
+                <th>Descrição do Produto</th>
+                <th>Categoria</th>
+                <th>Preço</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var produto in Model)
+            {
+                <tr>
+                    <td>@produto.NomeProduto</td>
+                    <td>@produto.DescricaoProduto</td>
+                    <td>@produto.CategoriaProduto</td>
+                    <td>@produto.PrecoProduto</td>
+                    <td>
+                        <a href="@Url.Action("Editar", "Produto", new { id = produto.ProdutoId })">Editar</a> |
+                        <a href="@Url.Action("Excluir", "Produto", new { id = produto.ProdutoId })">Excluir</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Nenhum produto encontrado.</p>
+}
+
+<a href="@Url.Action("Index", "Home")" class="btn btn-primary">Voltar para Página Inicial</a>
